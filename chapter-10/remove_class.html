@@ -1,0 +1,28 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adding classes to elements</title>
+</head>
+<body>
+    <div id="shape" class="square blue"></div>
+    <button onclick="change()">Disappear</button>
+
+    <script>
+        function change(){
+            document.getElementById("shape").classList.remove("blue");
+        }
+    </script>
+
+    <style>
+        .square{
+            height: 100px;
+            width: 100px;
+            background-color: yellow;
+        }
+        .square.blue{
+            background-color: blue;
+        }
+    </style>
+</body>
+</html>

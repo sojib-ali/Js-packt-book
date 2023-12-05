@@ -1,0 +1,30 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manupulating attributes</title>
+</head>
+<body>
+    <div id="shape" class="square"></div>
+    <button onclick="change_attribute()">Change Attributes</button>
+
+    <script>
+        function change_attribute(){
+            let el=document.getElementById("shape");
+            el.setAttribute("style", "background-color:red; border:1px solid break");
+            el.setAttribute("id", "new");
+            el.setAttribute("class", "circle");
+        }
+    </script>
+    <style>
+        div{
+            height: 100px;
+            width: 100px;
+            background-color: yellow;
+        }
+        .circle{
+            border-radius: 50%;
+        }
+    </style>
+</body>
+</html>

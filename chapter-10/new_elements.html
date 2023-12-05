@@ -1,0 +1,23 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>creating new elements</title>
+</head>
+<body>
+    <button id="spark">Add a number</button>
+
+    <script>
+        let b=document.getElementById("spark");
+        b.addEventListener("click",add_random_number);
+        function add_random_number(){
+            let a=document.createElement("p");
+            b=a;
+            b.innerHTML=Math.floor(Math.random()*100);
+            // b.innerHTML+=1;
+
+             document.body.appendChild(b);
+        }
+    </script>
+</body>
+</html>
