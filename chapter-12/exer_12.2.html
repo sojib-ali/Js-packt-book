@@ -1,0 +1,32 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice exercise 12.2</title>
+</head>
+<body>
+    <div class="output"></div>
+    <input type="text" placeholder="Enter Email">
+    <button>Check</button>
+    <script>
+        const output=document.querySelector(".output");
+        const emailVal=document.querySelector("input");
+        const btn=document.querySelector("button");
+        const emailExp=/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)\w+/;
+        btn.addEventListener("click",(e)=>{
+            const val=emailVal.value;
+            const result=emailExp.test(val);
+            let response="";
+            if(!result){
+                response="Invalid Email";
+                output.style.color="red";
+            }else{
+                response="valid Email";
+                output.style.color="green";
+            }
+            emailVal.value="";
+            output.textContent=response;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regular Expression</title>
+</head>
+<body>
+  <script>
+    let text="I love JavaScript!";
+    console.log(text.match(/javaScript/i));
+
+    let text2="I love React and JavaScript";
+    console.log(text2.match(/javascrip|nodejs|react/gi));
+
+    let text3="d";
+    console.log(text3.match(/[a-d]/));
+
+    let text4="t";
+    console.log(text4.match(/[a-zA-Z]/));
+
+    let text4_1="totall";
+    console.log(text4_1.match(/[a-z][a-z]/ig));
+
+    let text4_2="t";
+    console.log(text4_2.match(/[a-zA-Z0-9]/));
+
+    let text5="just some text.";
+    console.log(text5.match(/./g));
+
+    let text5_1="just some text.";
+    console.log(text5_1.match(/\./g));
+
+    let text6="I'm 29 years old.";
+    console.log(text6.match(/\d/g));
+
+    let text6_1="Coding is a lot of fun!";
+    console.log(text6_1.match(/\s/g));
+
+    let text6_2="In the end or at the beginning?";
+    console.log(text6_2.match(/\bin/gi));
+
+    let text7="I love JavaScript!";
+    console.log(text7.match(/(love|dislike)\s(javascrip|spiders)/gi));
+
+    let text8="I love JavaScript!";
+    console.log(text.match(/[a-zA-Z0-9][a-zA-Z0-9][a-zA-Z0-9][a-zA-Z0-9]/g));
+
+    let text8_1="You are doing great!";
+    console.log(text8_1.match(/n?g/gi));
+
+    let text9='123123123';
+    console.log(text9.match(/(123)+/));
+
+    let text9_1='123123123a';
+    console.log(text9_1.match(/(123)*a/g));
+
+    let text10="abcabcabc";
+    console.log(text10.match(/(abc){1,2}/));
+
+    let text11="I love JavaScript!";
+    console.log(text11.match(/(?<language>javascript)/i));
+
+    let text12="That's not the case.";
+    console.log(text12.search(/Case/i));
+      
+    let text13="Coding is fun. Coding opens up a lot of opportunities.";
+    console.log(text13.replace("Coding","javaScript"));
+
+    let text14="Coding is fun. Coding opens up a lot of opportunities.";
+    console.log(text14.replace(/Coding/g, "JavaScript"));
+  </script>
+
+</body>
+</html>

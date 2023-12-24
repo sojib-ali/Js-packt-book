@@ -1,0 +1,17 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email validation</title>
+</head>
+<body>
+    <script>
+        let emailPattern=/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/g;
+        let validEmail="maaike_1234@gmail.com";
+        let invalidEmail="maaike@mail@.com";
+        console.log(validEmail.match(emailPattern));
+        console.log(invalidEmail.match(emailPattern));
+
+    </script>
+</body>
+</html>
