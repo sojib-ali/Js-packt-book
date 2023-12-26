@@ -1,0 +1,21 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reading files</title>
+</head>
+<body>
+    <input type="file" onchange="reading_file(this.files)"/>
+    <div id="message"></div>
+    <script>
+        let message=document.getElementById("message");
+        function reading_file(files){
+            let fr=new FileReader();
+            fr.onload=function(e){
+                message.innerHTML=e.target.result;
+            };
+            fr.readAsText(files[0]);
+        }
+    </script>
+</body>
+</html>

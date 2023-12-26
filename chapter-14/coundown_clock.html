@@ -1,0 +1,127 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Clock</title>
+</head>
+<style>
+    .clock{
+        background-color: blue;
+        width: 400px;
+        text-align: center;
+        color: white;
+        font-size: 1 em;
+    }
+    .clock>span{
+        padding: 10px;
+        border-radius: 10px;
+        background-color: black;
+    }
+    .clock>span>span{
+        padding: 5px;
+        border-radius: 10px;
+        background-color: red;
+    }
+    input{
+        padding: 15px;
+        margin:20px;
+        font-size:1.5em;
+    }
+</style>
+<body>
+    <div>
+        <input type="date" name="endDate">
+        <div class="clock"> 
+        <span>
+            <span class="days">0</span>Days
+        </span>
+        <span>
+            <span class="hours">0</span>Hours
+        </span>
+        <span>
+            <span class="Minutes">0</span>Minutes
+        </span>
+        <span>
+            <span class="Seconds">0</span>Seconds
+        </span>
+        </div>
+    </div>
+
+    <script>
+        const endDate=document.querySelector("input[name='endDate']");
+        const clock=document.querySelector(".clock");
+
+        //Variable for managing the countdown timer
+        let timeInterval;
+        let timeStop=true;
+
+        //Retrieve saved coundown value from local storage
+        const savedValue=localStorage.getItem("countdown")|| false;
+
+        //If a saved value exists, start the clock with that value
+        if(savedValue){
+            startClock(savedValue); 
+            let inputValue = new Date(savedValue); 
+            endDate.valueAsDate = inputValue;
+        }
+
+        // Add event listener for changes in the end date input
+        endDate.addEventListener("change",function(e){
+            e.preventDefault();
+            //clear the existing interval
+            clearInterval(timeInterval);
+            //Get the selected end date
+            const temp=new Date(endDate.value);
+            //Save the end date in local storage
+            localStorage.setItem("countdown",temp);
+            //Start the clock with the new end date
+            startClock(temp);
+            //Set timeStop to true
+            timeStop=true;
+        });
+
+        //Function to start the countdown clock
+        function startClock(d){
+            function updateCounter(){
+                let tl=(timeLeft(d));
+                if(tl.total<=0){
+                    timeStop=false;
+                }
+                for(let pro in tl){
+                    let el=clock.querySelector("." + pro);
+                    if(el){
+                        el.innerHTML=tl[pro];
+                    }
+                }
+            }
+            //Initial update of the clock
+            updateCounter();
+
+            //if timeStop is true, set up an interval to update the clock
+            if(timeStop){
+                timeInterval=setInterval(updateCounter,1000);
+            }else{
+                //if timeStop is false, clear the interval
+                clearInterval(timeInterval);
+            }
+        }
+        // Function to calculate the time left until the end date
+        function timeLeft(d){
+            let currentDate=new Date();
+            let t=Date.parse(d)-Date.parse(currentDate);
+            console.log(t);
+            let seconds=Math.floor((t/1000)%60);
+            let minutes=Math.floor((t/1000/60)%60);
+            let hours=Math.floor((t/(1000*60*60))%24);
+            let days=Math.floor(t/(1000*60*60*24));
+            return{
+                "total":t,
+                "days":days,
+                "hours":hours,
+                "minutes":minutes,
+                "seconds":seconds
+            };
+        }
+    </script>
+</body>
+</html>
